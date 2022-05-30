@@ -55,3 +55,48 @@ var searchCityUV = function(lon, lat, city) {
     })
 };
 
+// Displaying current weather data 
+var displayCityWeather = function(city, searchTerm) {
+    // clear old content 
+    cityContainerEl.textContent = '';
+    citySearchTerm.textContent = searchTerm;
+
+    var displayCurrentDate = document.querySelector("#city-current-date");
+    var currentDate = moment();
+    displayCurrentDate.textContent = currentDate.format("(L)");
+
+    // weather icon 
+    var displayIcon = document.querySelector("#city-current-icon");
+    var currentIcon = "https://openweathermap.org/img/wn/" + city.weather[0].icon + "@2x.png"
+    displayIcon.setAttribute ("src", currentIcon);
+
+    // temperature 
+    var displayTemp = document.querySelector("#temp-input");
+    var currentTemp = Math.round(city.main.temp) + " °F";
+    displayTemp.textContent = currentTemp; 
+
+    // humidity
+    var displayHumidity = document.querySelector("#humidity-input");
+    var currentHumidity = city.main.humidity + "%";
+    displayHumidity.textContent = currentHumidity; 
+
+    // wind speed 
+    var displayWind = document.querySelector("#wind-input");
+    var currentWind = city.wind.speed + " MPH";
+    displayWind.textContent = currentWind;
+
+    // display list items
+    var newCityEl = document.createElement("li");
+    newCityEl.className = "list-group-item";
+    newCityEl.textContent = searchTerm;
+    newCityEl.addEventListener("click", clickHandler);
+    previousCityEl.appendChild(newCityEl);
+
+     // for uv index 
+     var lon = city.coord.lon; 
+     var lat = city.coord.lat; 
+ 
+     searchCityUV(lon, lat, city);
+
+};
+
