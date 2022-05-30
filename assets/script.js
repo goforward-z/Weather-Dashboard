@@ -30,8 +30,7 @@ var formSubmitHandler = function(event) {
     }
 };
 
-// search button 
-userFormEl.addEventListener("submit", formSubmitHandler);
+
 
 
 
@@ -124,4 +123,22 @@ var displayCityWeather = function(city, searchTerm) {
      searchCityUV(lon, lat, city);
 
 };
+
+// display UV
+var displayCurrentUv = function(data) {
+    var uv = data.value;
+        if (uv >= 6) {
+            currentUvEl.classList="badge badge-danger"
+            currentUvEl.innerHTML=" " + uv + " ";
+        } else if (uv > 3 ) {
+            currentUvEl.classList="badge badge-warning"
+            currentUvEl.innerHTML=" " + uv + " ";
+        } else {
+            currentUvEl.classList="badge badge-success"
+            currentUvEl.innerHTML=" " + uv + " ";
+        }
+};
+
+// search button 
+userFormEl.addEventListener("submit", formSubmitHandler);
 
