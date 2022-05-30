@@ -1,3 +1,15 @@
+// DOM elements to display on page 
+var userFormEl = document.querySelector("#user-form");
+var cityInputEl = document.querySelector("#city-input");
+var cityContainerEl = document.querySelector("#city-container");
+var citySearchTerm = document.querySelector("#city-search-term");
+var currentWeather = document.querySelector("#current-weather");
+var previousCityEl = document.getElementById("search-container");
+var fiveDayEl = document.querySelector("#forecast-cards");
+var currentUvEl = document.querySelector("#uv-input")
+
+var cityArray = [];
+
 //fetch API 
 
 var key = "bc9ef8171a91c60f25b7a47e9d7f2910";
