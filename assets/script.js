@@ -43,13 +43,6 @@ var clickHandler = function (event) {
 };
 
 
-
-
-
-//fetch API 
-
-
-
 //requesting current weather api
 var getCityWeather = function(city){
     var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + key;
