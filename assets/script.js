@@ -10,6 +10,31 @@ var currentUvEl = document.querySelector("#uv-input")
 
 var cityArray = [];
 
+// search city form submission 
+var formSubmitHandler = function(event) {
+    event.preventDefault();
+
+    var city = cityInputEl.value.trim();
+
+    if (city) {
+        getCityWeather(city);
+        getForecast(city);
+
+        cityArray.push(city);
+        localStorage.setItem("city", JSON.stringify(cityArray));
+
+        cityInputEl.value = "";
+
+     } else {
+        alert("Please enter a City name");
+    }
+};
+
+// search button 
+userFormEl.addEventListener("submit", formSubmitHandler);
+
+
+
 //fetch API 
 
 var key = "bc9ef8171a91c60f25b7a47e9d7f2910";
