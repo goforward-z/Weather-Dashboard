@@ -10,7 +10,7 @@ var getCityWeather = function(city){
     fetch(apiURL). then(function(response) {
         if (response.ok){
             response.json().then(function(data) {
-                console.log(data);
+                displayCityWeather(data, city);
             });
         } else {
             alert("Error:" + response.statusText);
@@ -23,4 +23,23 @@ var getCityWeather = function(city){
  
 }
 
-getCityWeather();
+//requesting UV index api
+var searchCityUV = function(lon, lat, city) {
+    var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?q=" + city + "&appid=" + key + "&lat=" + lat + "&lon=" + lon; 
+
+    fetch(uvUrl).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(lon, lat, city) {
+                displayCurrentUv(lon, lat, city);
+            });
+        } else {
+            alert("Error:" + response.statusText);
+        }
+        })
+        
+        // if network error 
+        .catch(function(error) {
+            alert("Unable to connect to Open Weather");
+    })
+};
+
