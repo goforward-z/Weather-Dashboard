@@ -1,3 +1,6 @@
+
+var key = "bc9ef8171a91c60f25b7a47e9d7f2910";
+
 // DOM elements to display on page 
 var userFormEl = document.querySelector("#user-form");
 var cityInputEl = document.querySelector("#city-input");
@@ -30,13 +33,22 @@ var formSubmitHandler = function(event) {
     }
 };
 
+// // clicking on previous searched city
+var clickHandler = function (event) {
+
+    var clickCity = event.currentTarget.textContent;
+
+    getCityWeather(clickCity);
+    getForecast(clickCity);
+};
+
 
 
 
 
 //fetch API 
 
-var key = "bc9ef8171a91c60f25b7a47e9d7f2910";
+
 
 //requesting current weather api
 var getCityWeather = function(city){
