@@ -139,6 +139,26 @@ var displayCurrentUv = function(data) {
         }
 };
 
+// 5 day forecast API 
+var getForecast = function(city) {
+    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&cnt=6&appid=" + key;
+
+    // if response was successful 
+    fetch(forecastURL).then(function(response) {
+        if (response.ok) {
+            response.json().then(function(data) {
+                displayForecast(data.list);
+            });
+        } else {
+            alert("Error:" + response.statusText);
+        }
+    })
+    // if network error 
+    .catch(function(error) {
+        alert("Unable to connect to Open Weather");
+    })
+};
+
 // search button 
 userFormEl.addEventListener("submit", formSubmitHandler);
 
